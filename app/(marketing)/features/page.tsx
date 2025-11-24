@@ -1,6 +1,8 @@
 import { generateSEOMetadata } from "@/lib/seo";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import FeatureCard from "@/components/ui/FeatureCard";
+import CTAButton from "@/components/ui/CTAButton";
+import { getWhatsAppLink } from "@/lib/whatsapp";
 import Image from "next/image";
 
 export const metadata = generateSEOMetadata({
