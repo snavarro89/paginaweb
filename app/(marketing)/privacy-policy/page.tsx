@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Introducción</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Insquid ("nosotros", "nuestro" o "la empresa") se compromete a proteger la privacidad de los usuarios de nuestro servicio. Esta Política de Privacidad describe cómo recopilamos, usamos, almacenamos y protegemos su información personal.
+              Insquid (&quot;nosotros&quot;, &quot;nuestro&quot; o &quot;la empresa&quot;) se compromete a proteger la privacidad de los usuarios de nuestro servicio. Esta Política de Privacidad describe cómo recopilamos, usamos, almacenamos y protegemos su información personal.
             </p>
           </section>
 
@@ -124,7 +124,7 @@ export default function PrivacyPolicyPage() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Cambios a esta Política</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Podemos actualizar esta Política de Privacidad ocasionalmente. Le notificaremos sobre cambios significativos por correo electrónico o mediante un aviso en el servicio. La fecha de "Última actualización" indica cuándo se realizó la última modificación.
+              Podemos actualizar esta Política de Privacidad ocasionalmente. Le notificaremos sobre cambios significativos por correo electrónico o mediante un aviso en el servicio. La fecha de &quot;Última actualización&quot; indica cuándo se realizó la última modificación.
             </p>
           </section>
 

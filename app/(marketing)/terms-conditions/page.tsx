@@ -78,7 +78,7 @@ export default function TermsConditionsPage() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Limitación de Responsabilidad</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Insquid se proporciona "tal cual" sin garantías de ningún tipo. No seremos responsables por daños indirectos, incidentales o consecuentes que resulten del uso o la imposibilidad de usar el servicio.
+              Insquid se proporciona &quot;tal cual&quot; sin garantías de ningún tipo. No seremos responsables por daños indirectos, incidentales o consecuentes que resulten del uso o la imposibilidad de usar el servicio.
             </p>
           </section>
 
