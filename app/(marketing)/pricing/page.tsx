@@ -2,6 +2,7 @@ import { generateSEOMetadata } from "@/lib/seo";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import PricingCard from "@/components/ui/PricingCard";
 import CTAButton from "@/components/ui/CTAButton";
+import { getWhatsAppLink } from "@/lib/whatsapp";
 
 export const metadata = generateSEOMetadata({
   title: "Precios - Insquid | Menos Costoso que el Caos Operativo",
@@ -47,103 +48,132 @@ export default function PricingPage() {
             </p>
           </div>
 
+          <div className="max-w-5xl mx-auto mb-8">
+            <p className="text-center text-lg text-gray-700 mb-8">
+              Todos nuestros planes incluyen usuarios ilimitados. Paga solo por lo que necesitas.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <PricingCard
-              name="Micro"
-              price="$2,500"
+              name="Plan Micro"
+              price="$1,000"
               period="/mes"
-              description="Para salir del caos operativo y empezar a crecer con orden"
+              description="Ideal para empresas pequeñas que buscan orden y control"
               features={[
-                "Hasta 5 técnicos activos",
+                "Hasta 30 órdenes de servicio activas",
+                "Hasta 25 sistemas",
+                "Hasta 5 checklists",
+                "15 GB de almacenamiento",
+                "1,000 tokens de IA",
+                "Soporte por correo",
                 "Usuarios ilimitados",
-                "Gestión de activos ilimitada",
-                "Órdenes de servicio ilimitadas",
-                "Reportes básicos",
-                "Soporte por email",
                 "Actualizaciones incluidas",
                 "Implementación guiada",
+                "Orden extra: $15 MXN",
+                "Sistema extra: $5 MXN",
+                "Checklist extra: $25 MXN",
               ]}
-              ctaText="Comenzar"
-              ctaHref="/contact"
+              ctaText="Solicitar Plan Micro"
+              ctaHref={getWhatsAppLink("Hola, estoy interesado en el Plan Micro de Insquid")}
             />
             <PricingCard
-              name="Pyme"
-              price="$4,500"
+              name="Plan Pyme"
+              price="$2,100"
               period="/mes"
-              description="Para escalar controladamente sin descontrolarse"
+              description="Para empresas en crecimiento que necesitan escalar"
               featured
               features={[
-                "Hasta 15 técnicos activos",
+                "Hasta 150 órdenes de servicio activas",
+                "Hasta 75 sistemas",
+                "Hasta 25 checklists",
+                "250 GB de almacenamiento",
+                "15,000 tokens de IA",
+                "1,000 APIs/Webhooks",
+                "Soporte por WhatsApp",
                 "Usuarios ilimitados",
-                "Todas las funcionalidades",
-                "Contratos y SLA",
-                "Mantenimientos preventivos",
-                "Reportes avanzados y dashboards",
-                "Soporte prioritario",
-                "Capacitación incluida",
-                "Implementación guiada",
                 "Actualizaciones incluidas",
+                "Implementación guiada",
+                "Orden extra: $8 MXN",
+                "Sistema extra: $4 MXN",
+                "Checklist extra: $15 MXN",
               ]}
-              ctaText="Comenzar"
-              ctaHref="/contact"
+              ctaText="Solicitar Plan Pyme"
+              ctaHref={getWhatsAppLink("Hola, estoy interesado en el Plan Pyme de Insquid")}
             />
             <PricingCard
-              name="Empresarial"
-              price="Personalizado"
-              period=""
-              description="Para control regional, multisitio y operaciones complejas"
+              name="Plan Empresarial"
+              price="$5,000"
+              period="/mes"
+              description="Para empresas grandes con operaciones complejas"
               features={[
-                "Técnicos ilimitados",
+                "Hasta 500 órdenes de servicio activas",
+                "Hasta 350 sistemas",
+                "Checklists ilimitados",
+                "1 TB de almacenamiento",
+                "75,000 tokens de IA",
+                "APIs/Webhooks ilimitados",
+                "Soporte por WhatsApp + Gerente",
                 "Usuarios ilimitados",
-                "Todas las funcionalidades",
-                "Integraciones personalizadas",
-                "Soporte 24/7",
-                "Gerente de cuenta dedicado",
-                "Capacitación personalizada",
-                "Migración asistida",
-                "SLA garantizado",
+                "Actualizaciones incluidas",
                 "Implementación completa",
+                "Orden extra: $4 MXN",
+                "Sistema extra: $2 MXN",
               ]}
-              ctaText="Contactar ventas"
-              ctaHref="/contact"
+              ctaText="Solicitar Plan Empresarial"
+              ctaHref={getWhatsAppLink("Hola, estoy interesado en el Plan Empresarial de Insquid")}
             />
           </div>
 
           <div className="bg-gray-50 rounded-lg p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Modelo de Precios Flexible
+              Modelo de Precios por Volumen
             </h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Todos los planes incluyen usuarios ilimitados. El cobro es por:
+              <strong>Los usuarios son ilimitados</strong> en todos los planes (no distinguimos por tipo de usuario). 
+              El precio de Insquid es por volumen, lo que significa que cada plan incluye límites base para:
             </p>
             <ul className="space-y-2 text-gray-700 mb-4">
               <li>
-                • <strong>Órdenes de servicio activas:</strong> Ideal si el volumen
-                de servicios varía mes a mes
+                • <strong>Órdenes de servicio activas:</strong> Cada plan tiene un límite base de órdenes activas simultáneas
               </li>
               <li>
-                • <strong>Técnicos activos:</strong> Perfecto si tienes un número
-                fijo de técnicos trabajando regularmente
+                • <strong>Sistemas:</strong> Cada plan incluye un número base de sistemas que puedes gestionar
               </li>
               <li>
-                • <strong>Sistemas/activos gestionados:</strong> Para empresas con
-                muchos activos y pocos servicios
+                • <strong>Checklists:</strong> Cada plan incluye un límite base de checklists (Plan Micro: 5, Plan Pyme: 25, Plan Empresarial: ilimitados)
               </li>
             </ul>
             <p className="text-gray-700 leading-relaxed mb-4">
-              También ofrecemos cargos variables opcionales:
+              <strong>Si necesitas más capacidad:</strong> Puedes agregar órdenes, sistemas o checklists de manera individual 
+              según los precios mostrados en cada plan. Esto te permite escalar solo lo que necesitas, cuando lo necesitas.
             </p>
-            <ul className="space-y-2 text-gray-700">
-              <li>• Órdenes extra más allá del plan base</li>
-              <li>• Sistemas/activos extra</li>
-              <li>• Almacenamiento adicional (GB)</li>
-              <li>• Tokens de IA para funcionalidades avanzadas</li>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              <strong>Cargos adicionales:</strong>
+            </p>
+            <ul className="space-y-2 text-gray-700 mb-4">
+              <li>• Órdenes extra más allá del límite base del plan</li>
+              <li>• Sistemas extra más allá del límite base del plan</li>
+              <li>• Checklists extra más allá del límite base del plan (Plan Micro: $25 MXN, Plan Pyme: $15 MXN, Plan Empresarial: ilimitados)</li>
+              <li>• Almacenamiento adicional: <strong>$0.50 MXN por GB</strong></li>
+              <li>• Tokens de IA para funcionalidades avanzadas (según límite del plan)</li>
             </ul>
-            <p className="text-gray-700 leading-relaxed mt-4">
-              <strong>Planes anuales:</strong> Ahorra hasta un 20% con compromisos
-              anuales. Todos los planes incluyen actualizaciones de software y
-              mejoras continuas sin costo adicional.
-            </p>
+            <div className="bg-primary-50 border-l-4 border-primary-600 rounded-lg p-6 mt-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-3">
+                Descuentos en Planes Anuales
+              </h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>
+                  • <strong>Plan anual financiado:</strong> Descuento del <strong>20%</strong> sobre el precio mensual
+                </li>
+                <li>
+                  • <strong>Plan anual de contado:</strong> Descuento del <strong>30%</strong> sobre el precio mensual
+                </li>
+              </ul>
+              <p className="text-gray-700 mt-3 text-sm">
+                Todos los planes incluyen actualizaciones de software y mejoras continuas sin costo adicional.
+              </p>
+            </div>
           </div>
 
           {/* Garantía 0 riesgo */}

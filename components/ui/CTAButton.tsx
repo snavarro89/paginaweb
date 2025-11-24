@@ -26,7 +26,7 @@ export default function CTAButton({
   };
 
   const isExternal = href.startsWith("http");
-  const isWhatsApp = href === getWhatsAppLink();
+  const isWhatsApp = href.startsWith("https://wa.me/");
 
   return (
     <Link
