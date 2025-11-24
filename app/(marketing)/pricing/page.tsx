@@ -6,7 +6,7 @@ import CTAButton from "@/components/ui/CTAButton";
 export const metadata = generateSEOMetadata({
   title: "Precios - Insquid | Menos Costoso que el Caos Operativo",
   description:
-    "Insquid cuesta menos que las horas que pierdes en caos operativo. Planes flexibles para empresas de servicios en campo. Garantía 0 riesgo.",
+    "Insquid cuesta menos que las horas que pierdes en caos operativo. Planes flexibles para empresas de servicios en campo. Garantía \"0 Riesgo\".",
 });
 
 export default function PricingPage() {
@@ -27,7 +27,7 @@ export default function PricingPage() {
 
       <SectionWrapper>
         <div className="max-w-6xl mx-auto">
-          <div className="bg-accent-50 border-l-4 border-accent-600 rounded-lg p-8 mb-12">
+          <div className="bg-primary-50 border-l-4 border-primary-600 rounded-lg p-8 mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               El Cálculo Real
             </h2>
@@ -148,7 +148,7 @@ export default function PricingPage() {
 
           {/* Garantía 0 riesgo */}
           <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-xl p-8 md:p-12 text-white mb-8">
-            <h2 className="text-3xl font-bold mb-6">Garantía 0 Riesgo</h2>
+            <h2 className="text-3xl font-bold mb-6">Garantía &quot;0 Riesgo&quot;</h2>
             <p className="text-xl text-primary-100 mb-6 leading-relaxed">
               Estamos tan seguros de que Insquid eliminará el caos operativo de tu
               empresa, que te ofrecemos esta garantía:

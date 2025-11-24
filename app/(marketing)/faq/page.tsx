@@ -28,7 +28,7 @@ export default function FAQPage() {
     {
       question: "¿Qué pasa si después de un mes no veo resultados?",
       answer:
-        "Tenemos una garantía 0 riesgo: si después de 30 días no ves valor en Insquid, te devolvemos tu dinero completo. Sin preguntas. Solo pedimos que completes el onboarding básico (1-2 semanas), cargues tu catálogo de clientes y activos, uses la plataforma para al menos 10 servicios y generes 2 reportes básicos. Si cumples esto y aún no ves valor, te devolvemos tu dinero. La mayoría de nuestros clientes ven resultados en las primeras semanas: menos tiempo perdido, evidencias completas, procesos más claros. Si no funciona para ti, no pierdes nada.",
+        "Tenemos una garantía \"0 Riesgo\": si después de 30 días no ves valor en Insquid, te devolvemos tu dinero completo. Sin preguntas. Solo pedimos que completes el onboarding básico (1-2 semanas), cargues tu catálogo de clientes y activos, uses la plataforma para al menos 10 servicios y generes 2 reportes básicos. Si cumples esto y aún no ves valor, te devolvemos tu dinero. La mayoría de nuestros clientes ven resultados en las primeras semanas: menos tiempo perdido, evidencias completas, procesos más claros. Si no funciona para ti, no pierdes nada.",
     },
     {
       question: "¿Cómo calculan el impacto del caos operativo en mi empresa?",

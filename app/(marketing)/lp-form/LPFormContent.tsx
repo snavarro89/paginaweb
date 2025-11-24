@@ -72,7 +72,7 @@ export default function LPFormContent() {
                   description="Una llamada de 30 minutos donde hacemos los números juntos. Sin compromiso, solo números reales de tu operación."
                 />
               </div>
-              <div className="bg-accent-50 border-l-4 border-accent-600 rounded-lg p-6">
+              <div className="bg-primary-50 border-l-4 border-primary-600 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">
                   El Número Real
                 </h3>

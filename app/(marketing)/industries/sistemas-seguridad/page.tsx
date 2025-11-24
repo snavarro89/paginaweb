@@ -2,6 +2,7 @@ import { generateSEOMetadata } from "@/lib/seo";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import FeatureCard from "@/components/ui/FeatureCard";
 import CTAButton from "@/components/ui/CTAButton";
+import { getWhatsAppLink } from "@/lib/whatsapp";
 
 export const metadata = generateSEOMetadata({
   title: "Sistemas de Seguridad - Del Caos al Control | Insquid",
@@ -12,16 +13,23 @@ export const metadata = generateSEOMetadata({
 export default function SistemasSeguridadPage() {
   return (
     <>
-      <SectionWrapper className="bg-gradient-to-br from-primary-50 to-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Insquid para Sistemas de Seguridad
-          </h1>
-          <p className="text-xl text-gray-600 leading-relaxed mb-8">
-            Control total sobre instalación, mantenimiento y monitoreo de sistemas
-            de seguridad, CCTV y control de acceso con visibilidad en tiempo real.
+      <SectionWrapper className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-100 via-accent-50 to-primary-200"></div>
+        <div className="absolute top-0 left-0 w-64 h-64 bg-primary-300/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-accent-300/20 rounded-full blur-3xl"></div>
+        <div className="relative max-w-4xl mx-auto text-center py-16 md:py-24">
+          <div className="mb-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              <span className="text-primary-600">Control Total</span>{" "}
+              <span className="text-gray-900">para Sistemas de Seguridad</span>
+            </h1>
+          </div>
+          <p className="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
+            Gestiona instalaciones, mantenimientos y automatiza procesos de sistemas
+            de seguridad y CCTV con Insquid en una sola plataforma. Elige el control
+            que se adapta a donde está tu negocio hoy.
           </p>
-          <CTAButton href="/contact" variant="primary">
+          <CTAButton href={getWhatsAppLink()} variant="primary" className="bg-primary-600 hover:bg-primary-700 text-white border-none shadow-lg">
             Agenda una demo
           </CTAButton>
         </div>
@@ -30,7 +38,7 @@ export default function SistemasSeguridadPage() {
       {/* Costo del Caos en Sistemas de Seguridad */}
       <SectionWrapper className="bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-accent-50 border-l-4 border-accent-600 rounded-lg p-8 mb-8">
+          <div className="bg-primary-50 border-l-4 border-primary-600 rounded-lg p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               El Costo del Caos en Sistemas de Seguridad
             </h2>
@@ -143,7 +151,7 @@ export default function SistemasSeguridadPage() {
             seguridad. Agenda una demo gratuita y conoce todas las funcionalidades.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <CTAButton href="/contact" variant="primary">
+            <CTAButton href={getWhatsAppLink()} variant="primary">
               Agenda una demo
             </CTAButton>
             <CTAButton href="/features" variant="secondary">

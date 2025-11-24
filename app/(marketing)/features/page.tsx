@@ -514,7 +514,7 @@ export default function FeaturesPage() {
             eliminar el caos operativo. Agenda una demo y ve cómo funciona en tu
             operación.
           </p>
-          <CTAButton href="/contact" variant="primary">
+          <CTAButton href={getWhatsAppLink()} variant="primary">
             Agenda una demo
           </CTAButton>
         </div>

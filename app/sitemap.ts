@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { getAllSlugs } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://insquid.com";
@@ -23,11 +24,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/industries/manufactura",
   ];
 
-  return routes.map((route) => ({
+  // Add blog posts to sitemap
+  const blogSlugs = getAllSlugs();
+  const blogRoutes = blogSlugs.map((slug) => `/blog/${slug}`);
+
+  const allRoutes = [...routes, ...blogRoutes];
+
+  return allRoutes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : 0.8,
+    changeFrequency: route === "" ? "weekly" : route.startsWith("/blog") ? "monthly" : "monthly",
+    priority: route === "" ? 1 : route.startsWith("/blog") ? 0.7 : 0.8,
   }));
 }
 

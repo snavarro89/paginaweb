@@ -3,6 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { getWhatsAppLink } from "@/lib/whatsapp";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -119,18 +121,23 @@ export default function Navbar() {
             >
               Blog
             </Link>
-            <Link
-              href="/contact"
+            <a
+              href="https://app.insquid.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-700 hover:text-primary-600 transition-colors font-medium"
             >
-              Contacto
-            </Link>
-            <Link
-              href="/contact"
-              className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-semibold"
+              Iniciar sesión
+            </a>
+            <a
+              href={getWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-semibold inline-flex items-center gap-2"
             >
+              <WhatsAppIcon className="w-5 h-5" />
               Agenda una demo
-            </Link>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -249,20 +256,25 @@ export default function Navbar() {
             >
               Blog
             </Link>
-            <Link
-              href="/contact"
+            <a
+              href="https://app.insquid.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block text-gray-700 hover:text-primary-600 transition-colors font-medium"
               onClick={() => setIsOpen(false)}
             >
-              Contacto
-            </Link>
-            <Link
-              href="/contact"
-              className="block bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-semibold text-center"
+              Iniciar sesión
+            </a>
+            <a
+              href={getWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-semibold text-center inline-flex items-center justify-center gap-2"
               onClick={() => setIsOpen(false)}
             >
+              <WhatsAppIcon className="w-5 h-5" />
               Agenda una demo
-            </Link>
+            </a>
           </div>
         )}
       </div>
