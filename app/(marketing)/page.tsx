@@ -53,9 +53,8 @@ export default function HomePage() {
               <iframe
                 src="https://www.loom.com/embed/efcd379fdbbc4fe28db4125992db0eee"
                 frameBorder="0"
-                webkitAllowFullScreen
-                mozAllowFullScreen
                 allowFullScreen
+                allow="fullscreen"
                 style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
                 title="Insquid - Gestión de Servicios en Campo con IA"
                 loading="lazy"
