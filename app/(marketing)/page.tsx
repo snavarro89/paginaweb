@@ -49,14 +49,15 @@ export default function HomePage() {
             </div>
             
             {/* Right Column - Video */}
-            {/* TODO: Replace with your actual YouTube video ID */}
-            <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl">
+            <div className="relative w-full rounded-lg overflow-hidden shadow-2xl" style={{ paddingBottom: '64.55089820359281%', height: 0 }}>
               <iframe
-                className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE"
-                title="Insquid - Gestión de Servicios en Campo con IA"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                src="https://www.loom.com/embed/efcd379fdbbc4fe28db4125992db0eee"
+                frameBorder="0"
+                webkitAllowFullScreen
+                mozAllowFullScreen
                 allowFullScreen
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                title="Insquid - Gestión de Servicios en Campo con IA"
                 loading="lazy"
               ></iframe>
             </div>
