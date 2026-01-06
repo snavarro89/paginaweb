@@ -1,111 +1,141 @@
 import { generateSEOMetadata } from "@/lib/seo";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import FeatureCard from "@/components/ui/FeatureCard";
 import CTAButton from "@/components/ui/CTAButton";
 import Link from "next/link";
+import { 
+  Snowflake, 
+  Flame, 
+  ArrowUpCircle, 
+  Sun, 
+  Factory, 
+  Briefcase, 
+  ShieldCheck,
+  ArrowRight
+} from "lucide-react";
 
 export const metadata = generateSEOMetadata({
-  title: "Industrias - Insquid",
+  title: "Industrias - Insquid | Soluciones por Sector",
   description:
-    "Insquid está diseñado para empresas de servicios en campo en diferentes industrias: sistemas contra incendio, seguridad, mantenimiento industrial, HVAC y manufactura.",
+    "Soluciones especializadas para HVAC, Seguridad, Incendio, Elevadores, Energía y Manufactura. Descubre cómo Insquid optimiza tu sector.",
 });
 
 export default function IndustriesPage() {
   const industries = [
     {
-      slug: "sistemas-contra-incendios",
-      title: "Sistemas Contra Incendios",
-      description:
-        "Gestiona el mantenimiento preventivo y correctivo de sistemas de protección contra incendios con cumplimiento normativo garantizado.",
-      icon: "🔥",
-      href: "/industries/sistemas-contra-incendios",
-    },
-    {
-      slug: "sistemas-seguridad",
-      title: "Sistemas de Seguridad",
-      description:
-        "Control total sobre instalación, mantenimiento y monitoreo de sistemas de seguridad y CCTV.",
-      icon: "🔒",
-      href: "/industries/sistemas-seguridad",
-    },
-    {
-      slug: "mantenimiento-industrial",
-      title: "Mantenimiento Industrial",
-      description:
-        "Optimiza el mantenimiento de equipos industriales con programación preventiva y gestión de repuestos.",
-      icon: "⚙️",
-      href: "/industries/mantenimiento-industrial",
-    },
-    {
       slug: "hvac",
       title: "HVAC",
-      description:
-        "Gestiona servicios de climatización, ventilación y aire acondicionado con seguimiento de contratos de mantenimiento.",
-      icon: "❄️",
+      description: "Gestión de climatización, ventilación y refrigeración industrial.",
+      icon: Snowflake,
       href: "/industries/hvac",
+      color: "text-blue-600 bg-blue-50"
     },
     {
-      slug: "manufactura",
-      title: "Manufactura",
-      description:
-        "Mantén tus líneas de producción operativas con gestión eficiente de servicios técnicos y mantenimiento.",
-      icon: "🏭",
-      href: "/industries/manufactura",
+      slug: "fire-safety",
+      title: "Contra Incendio",
+      description: "Cumplimiento normativo y mantenimiento de sistemas de protección.",
+      icon: Flame,
+      href: "/industries/fire-safety",
+      color: "text-red-600 bg-red-50"
     },
+    {
+      slug: "security-systems",
+      title: "Seguridad Electrónica",
+      description: "Instalación y mantenimiento de CCTV, alarmas y control de acceso.",
+      icon: ShieldCheck,
+      href: "/industries/security-systems",
+      color: "text-indigo-600 bg-indigo-50"
+    },
+    {
+      slug: "elevators",
+      title: "Elevadores",
+      description: "Mantenimiento preventivo y atención de emergencias en movilidad vertical.",
+      icon: ArrowUpCircle,
+      href: "/industries/elevators",
+      color: "text-primary-600 bg-primary-50"
+    },
+    {
+      slug: "energy",
+      title: "Energía",
+      description: "Mantenimiento de activos críticos en plantas solares y eléctricas.",
+      icon: Sun,
+      href: "/industries/energy",
+      color: "text-accent-600 bg-accent-50"
+    },
+    {
+      slug: "manufacturing",
+      title: "Manufactura",
+      description: "Mantenimiento industrial para evitar paros de línea no programados.",
+      icon: Factory,
+      href: "/industries/manufacturing",
+      color: "text-slate-600 bg-slate-50"
+    },
+    {
+      slug: "maintenance-contractors",
+      title: "Contratistas",
+      description: "Profesionaliza tus servicios de mantenimiento a terceros.",
+      icon: Briefcase,
+      href: "/industries/maintenance-contractors",
+      color: "text-emerald-600 bg-emerald-50"
+    }
   ];
 
   return (
-    <>
-      <SectionWrapper className="bg-gradient-to-br from-primary-50 to-white">
+    <div className="pt-24">
+      <SectionWrapper className="bg-gray-50/50">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Soluciones por Industria
+          <h1 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tight">
+            Soluciones por <span className="text-primary-600">Industria</span>
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Insquid se adapta a las necesidades específicas de tu industria.
-            Descubre cómo podemos ayudarte a optimizar tu operación.
+          <p className="text-xl md:text-2xl text-gray-600 leading-relaxed text-balance">
+            Insquid ha sido diseñado bajo la realidad operativa de los sectores industriales más exigentes.
           </p>
         </div>
       </SectionWrapper>
 
       <SectionWrapper>
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {industries.map((industry) => (
               <Link
                 key={industry.slug}
                 href={industry.href}
-                className="block bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105"
+                className="group block bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
-                <div className="text-4xl mb-4">{industry.icon}</div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                <div className={`w-16 h-16 rounded-2xl ${industry.color} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}>
+                  <industry.icon className="w-8 h-8" />
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">
                   {industry.title}
                 </h2>
-                <p className="text-gray-600 mb-4">{industry.description}</p>
-                <span className="text-primary-600 font-semibold hover:text-primary-700">
-                  Ver más →
-                </span>
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  {industry.description}
+                </p>
+                <div className="flex items-center text-primary-600 font-bold group-hover:translate-x-2 transition-transform">
+                  <span>Explorar solución</span>
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </SectionWrapper>
 
-      <SectionWrapper className="bg-primary-600 text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            ¿No encuentras tu industria?
+      <SectionWrapper className="bg-gray-900 text-white overflow-hidden relative">
+        <div className="absolute inset-0 opacity-20">
+           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-500 rounded-full blur-[100px]"></div>
+        </div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            ¿Tu industria es diferente?
           </h2>
-          <p className="text-xl text-primary-100 mb-8">
-            Insquid es flexible y se adapta a diferentes tipos de servicios en
-            campo. Contáctanos para ver cómo podemos ayudarte.
+          <p className="text-xl text-gray-400 mb-12 leading-relaxed">
+            Insquid es altamente configurable. Si tienes técnicos en campo y activos que mantener, podemos ayudarte.
           </p>
-          <CTAButton href="/contact" variant="secondary">
-            Hablar con un experto
+          <CTAButton href="https://wa.me/528112345678" variant="primary" className="rounded-full px-12 py-6 text-xl">
+            Hablar con un consultor
           </CTAButton>
         </div>
       </SectionWrapper>
-    </>
+    </div>
   );
 }
-

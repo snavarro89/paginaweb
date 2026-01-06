@@ -1,293 +1,201 @@
 import { generateSEOMetadata } from "@/lib/seo";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import PricingCard from "@/components/ui/PricingCard";
 import CTAButton from "@/components/ui/CTAButton";
 import { getWhatsAppLink } from "@/lib/whatsapp";
+import { 
+  CheckCircle2, 
+  Zap, 
+  Rocket, 
+  Shield, 
+  Building2, 
+  HelpCircle,
+  ArrowRight
+} from "lucide-react";
+import * as motion from "framer-motion/client";
 
 export const metadata = generateSEOMetadata({
-  title: "Precios - Insquid | Menos Costoso que el Caos Operativo",
-  description:
-    "Insquid cuesta menos que las horas que pierdes en caos operativo. Planes flexibles para empresas de servicios en campo. Garantía \"0 Riesgo\".",
+  title: "Precios - Insquid | Basado en Uso y Transparente",
+  description: "Planes flexibles que crecen contigo. Paga solo por lo que usas: servicios, activos y checklists. Usuarios ilimitados siempre.",
 });
 
 export default function PricingPage() {
+  const plans = [
+    {
+      name: "Starter",
+      icon: Rocket,
+      price: "1,000",
+      desc: "Ideal para empresas pequeñas buscando orden.",
+      features: [
+        "Hasta 30 servicios/mes",
+        "Hasta 25 activos",
+        "5 Checklists personalizados",
+        "1,000 tokens de IA⁺",
+        "Usuarios ilimitados",
+        "Soporte por correo"
+      ],
+      color: "border-gray-200"
+    },
+    {
+      name: "Growth",
+      icon: Zap,
+      price: "2,100",
+      desc: "Para empresas en crecimiento que escalan.",
+      popular: true,
+      features: [
+        "Hasta 150 servicios/mes",
+        "Hasta 75 activos",
+        "25 Checklists personalizados",
+        "15,000 tokens de IA⁺",
+        "Usuarios ilimitados",
+        "Soporte por WhatsApp"
+      ],
+      color: "border-primary-500 shadow-primary-500/10 shadow-2xl scale-105"
+    },
+    {
+      name: "Enterprise",
+      icon: Building2,
+      price: "5,000",
+      desc: "Para operaciones complejas a gran escala.",
+      features: [
+        "Hasta 500 servicios/mes",
+        "Hasta 350 activos",
+        "Checklists ilimitados",
+        "75,000 tokens de IA⁺",
+        "Usuarios ilimitados",
+        "Gerente de cuenta dedicado"
+      ],
+      color: "border-gray-200"
+    }
+  ];
+
   return (
-    <>
-      <SectionWrapper className="bg-gradient-to-br from-primary-50 to-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Precios que Cuestan Menos que el Caos Operativo
-          </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Insquid cuesta menos que las horas que tus técnicos pierden cada mes en
-            tareas no productivas. Menos que un solo servicio no cobrado. Menos que
-            un cliente perdido.
-          </p>
+    <div className="pt-24 bg-gray-50/50 min-h-screen">
+      {/* Header */}
+      <section className="py-20 text-center">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tight">Precios <span className="text-primary-600">Basados en Uso</span></h1>
+            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed text-balance">
+              Sin muros de "Contactar a Ventas". Sin cobro por usuario. Paga solo por el volumen de tu operación.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Pricing Grid */}
+      <SectionWrapper className="pt-0">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8 items-center">
+          {plans.map((plan, i) => (
+            <div 
+              key={i} 
+              className={`bg-white rounded-[3rem] p-10 border-2 transition-all duration-300 relative overflow-hidden ${plan.color}`}
+            >
+              {plan.popular && (
+                <div className="absolute top-0 right-0 bg-primary-600 text-white px-6 py-2 rounded-bl-3xl font-bold text-sm">
+                  MÁS POPULAR
+                </div>
+              )}
+              <div className="mb-8">
+                <div className={`w-14 h-14 rounded-2xl ${plan.popular ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600'} flex items-center justify-center mb-6`}>
+                  <plan.icon className="w-7 h-7" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+                <p className="text-gray-500 mb-8">{plan.desc}</p>
+                <div className="flex items-baseline space-x-1">
+                  <span className="text-gray-500 font-medium text-xl">$</span>
+                  <span className="text-5xl font-black text-gray-900">{plan.price}</span>
+                  <span className="text-gray-500 font-medium text-lg">/mes</span>
+                </div>
+                <div className="text-xs font-bold text-gray-400 mt-2">MXN + IVA</div>
+              </div>
+
+              <div className="space-y-4 mb-10">
+                {plan.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-center space-x-3 text-gray-700">
+                    <CheckCircle2 className="w-5 h-5 text-primary-600 shrink-0" />
+                    <span className="font-medium text-sm lg:text-base">{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <CTAButton 
+                href={getWhatsAppLink(`Hola, me interesa el Plan ${plan.name} de Insquid`)}
+                variant={plan.popular ? "primary" : "secondary"}
+                className={`w-full rounded-full py-4 font-bold text-lg ${!plan.popular ? 'border-2 border-gray-200 hover:bg-gray-50' : ''}`}
+              >
+                Solicitar Plan {plan.name}
+              </CTAButton>
+            </div>
+          ))}
         </div>
       </SectionWrapper>
 
+      {/* Usage Calculator Placeholder */}
+      <SectionWrapper className="bg-white border-y border-gray-100">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-8">¿Necesitas algo a la medida?</h2>
+          <p className="text-xl text-gray-600 mb-12 leading-relaxed">
+            Nuestros planes se adaptan a tu volumen. Si excedes los límites base, solo pagas una pequeña cuota por servicio o activo adicional.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left bg-gray-50 p-12 rounded-[3rem]">
+             <div>
+                <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                   <ArrowRight className="w-5 h-5 text-primary-600" />
+                   Adicionales
+                </h4>
+                <ul className="space-y-3 text-gray-600 font-medium">
+                   <li>Servicio extra: desde $4 MXN</li>
+                   <li>Activo extra: desde $2 MXN</li>
+                   <li>Checklist extra: $15 MXN</li>
+                   <li>100 GB almacenamiento: $50 MXN</li>
+                </ul>
+             </div>
+             <div>
+                <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                   <ArrowRight className="w-5 h-5 text-primary-600" />
+                   Descuentos Anuales
+                </h4>
+                <ul className="space-y-3 text-gray-600 font-medium">
+                   <li className="text-primary-700 font-bold">Pago Anual Contado: 30% OFF</li>
+                   <li>Pago Anual Financiado: 20% OFF</li>
+                </ul>
+             </div>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* FAQ */}
       <SectionWrapper>
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-primary-50 border-l-4 border-primary-600 rounded-lg p-8 mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              El Cálculo Real
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Un técnico promedio pierde 2-3 horas diarias en tareas no productivas:
-              buscar evidencias, pasar información por WhatsApp, corregir errores,
-              hacer reportes manuales. Eso son{" "}
-              <strong className="text-gray-900">40-60 horas al mes</strong> por
-              técnico.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              <strong className="text-gray-900">
-                Insquid cuesta menos que esas horas perdidas.
-              </strong>{" "}
-              Y eso sin contar servicios no cobrados, clientes perdidos o
-              oportunidades de crecimiento que nunca se materializan.
-            </p>
-          </div>
-
-          <div className="max-w-5xl mx-auto mb-8">
-            <p className="text-center text-lg text-gray-700 mb-8">
-              Todos nuestros planes incluyen usuarios ilimitados. Paga solo por lo que necesitas.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <PricingCard
-              name="Plan Micro"
-              price="$1,000"
-              period="/mes"
-              description="Ideal para empresas pequeñas que buscan orden y control"
-              features={[
-                "Hasta 30 órdenes de servicio activas",
-                "Hasta 25 sistemas",
-                "Hasta 5 checklists",
-                "15 GB de almacenamiento",
-                "1,000 tokens de IA",
-                "Soporte por correo",
-                "Usuarios ilimitados",
-                "Actualizaciones incluidas",
-                "Implementación guiada",
-                "Orden extra: $15 MXN",
-                "Sistema extra: $5 MXN",
-                "Checklist extra: $25 MXN",
-              ]}
-              ctaText="Solicitar Plan Micro"
-              ctaHref={getWhatsAppLink("Hola, estoy interesado en el Plan Micro de Insquid")}
-            />
-            <PricingCard
-              name="Plan Pyme"
-              price="$2,100"
-              period="/mes"
-              description="Para empresas en crecimiento que necesitan escalar"
-              featured
-              features={[
-                "Hasta 150 órdenes de servicio activas",
-                "Hasta 75 sistemas",
-                "Hasta 25 checklists",
-                "250 GB de almacenamiento",
-                "15,000 tokens de IA",
-                "1,000 APIs/Webhooks",
-                "Soporte por WhatsApp",
-                "Usuarios ilimitados",
-                "Actualizaciones incluidas",
-                "Implementación guiada",
-                "Orden extra: $8 MXN",
-                "Sistema extra: $4 MXN",
-                "Checklist extra: $15 MXN",
-              ]}
-              ctaText="Solicitar Plan Pyme"
-              ctaHref={getWhatsAppLink("Hola, estoy interesado en el Plan Pyme de Insquid")}
-            />
-            <PricingCard
-              name="Plan Empresarial"
-              price="$5,000"
-              period="/mes"
-              description="Para empresas grandes con operaciones complejas"
-              features={[
-                "Hasta 500 órdenes de servicio activas",
-                "Hasta 350 sistemas",
-                "Checklists ilimitados",
-                "1 TB de almacenamiento",
-                "75,000 tokens de IA",
-                "APIs/Webhooks ilimitados",
-                "Soporte por WhatsApp + Gerente",
-                "Usuarios ilimitados",
-                "Actualizaciones incluidas",
-                "Implementación completa",
-                "Orden extra: $4 MXN",
-                "Sistema extra: $2 MXN",
-              ]}
-              ctaText="Solicitar Plan Empresarial"
-              ctaHref={getWhatsAppLink("Hola, estoy interesado en el Plan Empresarial de Insquid")}
-            />
-          </div>
-
-          <div className="bg-gray-50 rounded-lg p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Modelo de Precios por Volumen
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              <strong>Los usuarios son ilimitados</strong> en todos los planes (no distinguimos por tipo de usuario). 
-              El precio de Insquid es por volumen, lo que significa que cada plan incluye límites base para:
-            </p>
-            <ul className="space-y-2 text-gray-700 mb-4">
-              <li>
-                • <strong>Órdenes de servicio activas:</strong> Cada plan tiene un límite base de órdenes activas simultáneas
-              </li>
-              <li>
-                • <strong>Sistemas:</strong> Cada plan incluye un número base de sistemas que puedes gestionar
-              </li>
-              <li>
-                • <strong>Checklists:</strong> Cada plan incluye un límite base de checklists (Plan Micro: 5, Plan Pyme: 25, Plan Empresarial: ilimitados)
-              </li>
-            </ul>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              <strong>Si necesitas más capacidad:</strong> Puedes agregar órdenes, sistemas o checklists de manera individual 
-              según los precios mostrados en cada plan. Esto te permite escalar solo lo que necesitas, cuando lo necesitas.
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              <strong>Cargos adicionales:</strong>
-            </p>
-            <ul className="space-y-2 text-gray-700 mb-4">
-              <li>• Órdenes extra más allá del límite base del plan</li>
-              <li>• Sistemas extra más allá del límite base del plan</li>
-              <li>• Checklists extra más allá del límite base del plan (Plan Micro: $25 MXN, Plan Pyme: $15 MXN, Plan Empresarial: ilimitados)</li>
-              <li>• Almacenamiento adicional: <strong>$0.50 MXN por GB</strong></li>
-              <li>• Tokens de IA para funcionalidades avanzadas (según límite del plan)</li>
-            </ul>
-            <div className="bg-primary-50 border-l-4 border-primary-600 rounded-lg p-6 mt-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
-                Descuentos en Planes Anuales
-              </h3>
-              <ul className="space-y-2 text-gray-700">
-                <li>
-                  • <strong>Plan anual financiado:</strong> Descuento del <strong>20%</strong> sobre el precio mensual
-                </li>
-                <li>
-                  • <strong>Plan anual de contado:</strong> Descuento del <strong>30%</strong> sobre el precio mensual
-                </li>
-              </ul>
-              <p className="text-gray-700 mt-3 text-sm">
-                Todos los planes incluyen actualizaciones de software y mejoras continuas sin costo adicional.
-              </p>
-            </div>
-          </div>
-
-          {/* Garantía 0 riesgo */}
-          <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-xl p-8 md:p-12 text-white mb-8">
-            <h2 className="text-3xl font-bold mb-6">Garantía &quot;0 Riesgo&quot;</h2>
-            <p className="text-xl text-primary-100 mb-6 leading-relaxed">
-              Estamos tan seguros de que Insquid eliminará el caos operativo de tu
-              empresa, que te ofrecemos esta garantía:
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div className="bg-white/10 rounded-lg p-6 backdrop-blur">
-                <h3 className="text-xl font-bold mb-3">
-                  Implementación Guiada Sin Costo
-                </h3>
-                <p className="text-primary-100">
-                  Nuestro equipo te ayuda a configurar Insquid según tus procesos.
-                  Migración de datos, capacitación y soporte durante la
-                  implementación, todo incluido.
-                </p>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center">Preguntas Frecuentes</h2>
+          <div className="space-y-8">
+            {[
+              { q: "¿Los usuarios realmente son ilimitados?", a: "Sí. No importa si tienes 5 o 500 técnicos, administradores o clientes usando la plataforma. Solo cobramos por el volumen de activos y servicios gestionados." },
+              { q: "¿Qué pasa si excedo mi límite mensual?", a: "Nada se detiene. Te notificaremos al llegar al 90% y los servicios excedentes se facturarán al precio por unidad de tu plan al final del mes." },
+              { q: "¿Hay costo de implementación?", a: "La implementación básica guiada es gratuita en todos los planes. Para integraciones complejas o carga masiva de miles de activos, podemos ofrecerte un paquete de consultoría a la medida." }
+            ].map((faq, i) => (
+              <div key={i} className="p-8 bg-white rounded-3xl border border-gray-100">
+                <h4 className="text-xl font-bold text-gray-900 mb-4">{faq.q}</h4>
+                <p className="text-gray-600 leading-relaxed">{faq.a}</p>
               </div>
-              <div className="bg-white/10 rounded-lg p-6 backdrop-blur">
-                <h3 className="text-xl font-bold mb-3">
-                  Periodo de Garantía de 30 Días
-                </h3>
-                <p className="text-primary-100">
-                  Si después de 30 días no ves valor en Insquid, te devolvemos tu
-                  dinero completo. Sin preguntas. Solo pedimos una breve llamada de
-                  feedback para mejorar.
-                </p>
-              </div>
-            </div>
-            <div className="bg-white/10 rounded-lg p-6 backdrop-blur">
-              <h3 className="text-xl font-bold mb-3">
-                Condiciones Sencillas de Éxito
-              </h3>
-              <p className="text-primary-100 mb-3">
-                Para que la garantía aplique, solo necesitas:
-              </p>
-              <ul className="space-y-2 text-primary-100">
-                <li>• Completar el onboarding básico (1-2 semanas)</li>
-                <li>• Cargar tu catálogo de clientes y activos</li>
-                <li>• Usar la plataforma para al menos 10 servicios</li>
-                <li>• Generar al menos 2 reportes básicos</li>
-              </ul>
-              <p className="text-primary-100 mt-4">
-                Si cumples esto y aún no ves valor, te devolvemos tu dinero.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-primary-50 rounded-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Preguntas Frecuentes sobre Precios
-            </h2>
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  ¿Puedo cambiar de plan más adelante?
-                </h3>
-                <p className="text-gray-700">
-                  Sí, puedes actualizar o cambiar de plan en cualquier momento.
-                  Los cambios se reflejan en tu próximo ciclo de facturación.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  ¿Hay costos de implementación ocultos?
-                </h3>
-                <p className="text-gray-700">
-                  No. Todos los planes incluyen implementación guiada sin costo
-                  adicional. Para migraciones muy complejas o personalizaciones
-                  extensas, podemos ofrecer servicios adicionales opcionales.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  ¿Qué pasa si excedo el límite de técnicos o servicios?
-                </h3>
-                <p className="text-gray-700">
-                  Te notificaremos cuando te acerques al límite. Puedes agregar
-                  técnicos o servicios adicionales (se facturan prorrateados) o
-                  actualizar a un plan superior.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  ¿Los precios incluyen impuestos?
-                </h3>
-                <p className="text-gray-700">
-                  Los precios mostrados no incluyen impuestos. Se aplicarán los
-                  impuestos correspondientes según la legislación fiscal de tu
-                  país.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </SectionWrapper>
 
       {/* Final CTA */}
-      <SectionWrapper className="bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Empieza Sin Riesgo
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Agenda una llamada y hagamos los números de tu caos operativo. Te
-            mostraremos cuánto te está costando y cómo Insquid lo elimina.
-          </p>
-          <CTAButton href="/contact" variant="primary">
-            Agenda una llamada
+      <section className="py-24 text-center">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <h2 className="text-4xl font-bold mb-8">Hablemos de tus números</h2>
+          <p className="text-xl text-gray-600 mb-12">Cuéntanos cuántos técnicos y servicios tienes, y te armamos la propuesta ideal para tu rentabilidad.</p>
+          <CTAButton href={getWhatsAppLink("Hola, quiero una cotización a la medida para mi empresa")} className="rounded-full px-12 py-6 text-xl">
+            Cotizar por WhatsApp
           </CTAButton>
         </div>
-      </SectionWrapper>
-    </>
+      </section>
+    </div>
   );
 }

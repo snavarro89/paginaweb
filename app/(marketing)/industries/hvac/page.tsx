@@ -1,165 +1,134 @@
 import { generateSEOMetadata } from "@/lib/seo";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import FeatureCard from "@/components/ui/FeatureCard";
 import CTAButton from "@/components/ui/CTAButton";
 import { getWhatsAppLink } from "@/lib/whatsapp";
+import Image from "next/image";
+import { 
+  CheckCircle2, 
+  AlertTriangle, 
+  Thermometer, 
+  Clock, 
+  Zap, 
+  ArrowRight,
+  TrendingUp,
+  Snowflake
+} from "lucide-react";
+import * as motion from "framer-motion/client";
 
 export const metadata = generateSEOMetadata({
-  title: "HVAC - Del Caos al Control de Contratos | Insquid",
-  description:
-    "Elimina el caos operativo en empresas HVAC. Gestiona contratos automáticamente, optimiza rutas de técnicos y reduce servicios de emergencia mal coordinados.",
+  title: "Software para HVAC y Climatización - Insquid",
+  description: "Optimiza tu operación de HVAC. Gestiona mantenimientos preventivos, correctivos y emergencias con Agentes IA⁺.",
 });
 
-export default function HVACPage() {
+export default function HVACIndustryPage() {
+  const painPoints = [
+    "Falta de seguimiento a mantenimientos preventivos",
+    "Urgencias mal coordinadas y técnicos sin información",
+    "Pérdida de historial de reparaciones por equipo",
+    "Dificultad para documentar evidencias y firmas"
+  ];
+
+  const kpis = [
+    { label: "Productividad", value: "+35%" },
+    { label: "Correctivos", value: "-20%" },
+    { label: "Tiempo de Reporte", value: "Real-time" }
+  ];
+
   return (
-    <>
-      <SectionWrapper className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-100 via-accent-50 to-primary-200"></div>
-        <div className="absolute top-0 left-0 w-64 h-64 bg-primary-300/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-0 right-0 w-64 h-64 bg-accent-300/20 rounded-full blur-3xl"></div>
-        <div className="relative max-w-4xl mx-auto text-center py-16 md:py-24">
-          <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              <span className="text-primary-600">Control Total</span>{" "}
-              <span className="text-gray-900">para HVAC</span>
-            </h1>
+    <div className="pt-24">
+      {/* Hero */}
+      <section className="bg-primary-900 text-white py-24 relative">
+        <div className="absolute inset-0 opacity-20">
+          <Image src="/images/web_calendar.png" alt="HVAC Background" fill className="object-cover blur-sm" />
+        </div>
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center space-x-2 bg-primary-500/20 border border-primary-500/30 px-3 py-1 rounded-full mb-6">
+              <Snowflake className="w-4 h-4 text-primary-400" />
+              <span className="text-sm font-bold text-primary-400 uppercase">Solución para HVAC</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-black mb-6">Mantenimiento de <span className="text-primary-400">Climatización</span> sin Caos</h1>
+            <p className="text-xl text-gray-300 mb-10">
+              Controla cada unidad condensadora, manejadora y chiller. Insquid es la plataforma que los técnicos de HVAC aman y los gerentes necesitan.
+            </p>
+            <CTAButton href={getWhatsAppLink("Hola, me interesa Insquid para mi empresa de HVAC")} variant="primary" className="rounded-full px-8 py-4 text-lg">
+              Demo para HVAC por WhatsApp
+            </CTAButton>
           </div>
-          <p className="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
-            Gestiona contratos de mantenimiento, optimiza rutas y automatiza
-            procesos de servicios HVAC con Insquid en una sola plataforma. Elige el
-            control que se adapta a donde está tu negocio hoy.
-          </p>
-          <CTAButton href={getWhatsAppLink()} variant="primary" className="bg-primary-600 hover:bg-primary-700 text-white border-none shadow-lg">
-            Agenda una demo
+        </div>
+      </section>
+
+      {/* Pain Points */}
+      <SectionWrapper>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-8">¿El caos operativo frena tu crecimiento?</h2>
+            <div className="space-y-6">
+              {painPoints.map((point, i) => (
+                <div key={i} className="flex items-start space-x-4 p-6 bg-red-50 rounded-2xl border border-red-100">
+                  <AlertTriangle className="w-6 h-6 text-red-500 shrink-0" />
+                  <p className="text-lg font-medium text-red-900">{point}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative">
+             <div className="aspect-square bg-gray-100 rounded-3xl overflow-hidden relative shadow-2xl">
+                <Image src="/images/mobile_visit_detail.PNG" alt="App HVAC" fill className="object-cover" />
+             </div>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Workflow */}
+      <SectionWrapper className="bg-gray-900 text-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold mb-16 text-center">Tu flujo ideal con Insquid</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              { title: "Programación", desc: "Sube tu base de equipos y deja que la IA⁺ programe los preventivos del año según el contrato." },
+              { title: "Ejecución", desc: "Técnicos llenan checklists de presión, amperaje y limpieza desde la app con fotos obligatorias." },
+              { title: "Entrega", desc: "Reporte automático PDF enviado al cliente al terminar, validado por nuestro Agente IA⁺." }
+            ].map((step, i) => (
+              <div key={i} className="relative p-8 rounded-3xl bg-white/5 border border-white/10">
+                <div className="text-6xl font-black text-white/5 absolute -top-4 -right-4">{i+1}</div>
+                <h3 className="text-2xl font-bold mb-4 text-primary-400">{step.title}</h3>
+                <p className="text-gray-400 text-lg leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* KPIs */}
+      <SectionWrapper>
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-primary-600 rounded-[3rem] p-12 md:p-20 text-white flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="max-w-xl">
+              <h2 className="text-4xl font-bold mb-6">Resultados medibles para tu operación</h2>
+              <p className="text-xl text-primary-100">Implementar Insquid no es solo digitalizar, es mejorar tus indicadores clave de negocio desde el primer mes.</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+              {kpis.map((kpi, i) => (
+                <div key={i}>
+                  <div className="text-5xl font-black mb-2">{kpi.value}</div>
+                  <div className="text-primary-100 font-medium uppercase tracking-widest text-sm">{kpi.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Final CTA */}
+      <section className="py-24 text-center">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <h2 className="text-4xl font-bold mb-8">Empieza a trabajar con orden</h2>
+          <CTAButton href={getWhatsAppLink("Hola, quiero una demo para mi empresa de HVAC")} className="rounded-full px-10 py-5 text-xl">
+            Hablar con un Experto en HVAC
           </CTAButton>
         </div>
-      </SectionWrapper>
-
-      {/* Costo del Caos en HVAC */}
-      <SectionWrapper className="bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-primary-50 border-l-4 border-primary-600 rounded-lg p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              El Costo del Caos en HVAC
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              En empresas HVAC, el caos operativo se traduce en: contratos de
-              mantenimiento que no se cumplen, servicios de emergencia mal
-              coordinados, técnicos perdiendo horas en desplazamientos
-              innecesarios, filtros que no se cambian a tiempo, y clientes que se
-              van por mal servicio.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              <strong className="text-gray-900">
-                Insquid elimina ese caos:
-              </strong>{" "}
-              contratos gestionados automáticamente, rutas optimizadas para técnicos,
-              mantenimientos preventivos programados, servicios de emergencia bien
-              coordinados, y clientes satisfechos con servicio proactivo.
-            </p>
-          </div>
-        </div>
-      </SectionWrapper>
-
-      <SectionWrapper>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Beneficios Específicos para tu Industria
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Funcionalidades diseñadas para empresas de climatización y HVAC
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <FeatureCard
-              title="Gestión de Contratos de Mantenimiento"
-              description="Administra contratos anuales, semestrales y mensuales de mantenimiento. Programa visitas automáticamente según frecuencia acordada y rastrea cumplimiento de SLA."
-            />
-            <FeatureCard
-              title="Mantenimiento de Equipos HVAC"
-              description="Rastrea cada unidad de aire acondicionado, sistema de ventilación y equipo de climatización. Mantén historial de limpiezas, filtros, refrigerante y reparaciones."
-            />
-            <FeatureCard
-              title="Checklists de Mantenimiento Estacional"
-              description="Crea checklists específicos para mantenimiento de verano e invierno. Los técnicos completan inspecciones detalladas con mediciones de temperatura, presión y flujo."
-            />
-            <FeatureCard
-              title="Gestión de Refrigerante y Filtros"
-              description="Controla inventario de refrigerante, filtros y repuestos. Programa reemplazos según uso y recibe alertas de niveles bajos o fechas de vencimiento."
-            />
-            <FeatureCard
-              title="Optimización de Rutas de Técnicos"
-              description="Agrupa servicios por zona geográfica y optimiza rutas para reducir tiempos de desplazamiento. Aumenta la cantidad de servicios completados por día."
-            />
-            <FeatureCard
-              title="Reportes de Eficiencia Energética"
-              description="Registra mediciones de consumo energético y eficiencia de equipos. Genera reportes que ayudan a tus clientes a optimizar costos operativos."
-            />
-          </div>
-        </div>
-      </SectionWrapper>
-
-      <SectionWrapper className="bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-            Casos de Uso Comunes
-          </h2>
-          <div className="space-y-6">
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Mantenimiento Preventivo de Aire Acondicionado
-              </h3>
-              <p className="text-gray-700">
-                Programa limpiezas trimestrales, cambios de filtros mensuales y
-                revisiones anuales. Los técnicos registran mediciones, toman fotos
-                y documentan el estado de cada equipo.
-              </p>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Servicios de Emergencia 24/7
-              </h3>
-              <p className="text-gray-700">
-                Gestiona llamadas de emergencia, asigna técnicos disponibles y
-                rastrea tiempos de respuesta. Prioriza servicios críticos y mantén
-                a clientes informados en tiempo real.
-              </p>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Instalación de Nuevos Sistemas
-              </h3>
-              <p className="text-gray-700">
-                Gestiona proyectos de instalación desde la cotización hasta la
-                puesta en marcha. Asigna equipos de técnicos, rastrea avances y
-                documenta instalaciones completas.
-              </p>
-            </div>
-          </div>
-        </div>
-      </SectionWrapper>
-
-      <SectionWrapper>
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            ¿Listo para Optimizar tu Operación?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Descubre cómo Insquid puede transformar la gestión de tus servicios
-            HVAC. Agenda una demo gratuita y conoce todas las funcionalidades.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <CTAButton href={getWhatsAppLink()} variant="primary">
-              Agenda una demo
-            </CTAButton>
-            <CTAButton href="/features" variant="secondary">
-              Ver todas las funcionalidades
-            </CTAButton>
-          </div>
-        </div>
-      </SectionWrapper>
-    </>
+      </section>
+    </div>
   );
 }
-
